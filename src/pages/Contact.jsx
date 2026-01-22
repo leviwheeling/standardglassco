@@ -40,7 +40,7 @@ export default function Contact() {
   const heroRef = useRef(null)
   const formRef = useRef(null)
   const isHeroInView = useInView(heroRef, { once: true })
-  const isFormInView = useInView(formRef, { once: true, margin: '-100px' })
+  const isFormInView = useInView(formRef, { once: true, margin: '-50px' })
   
   const [formData, setFormData] = useState({
     name: '',
@@ -54,38 +54,37 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Simulate form submission
     setSubmitted(true)
   }
 
   return (
     <main>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-24 lg:py-32 bg-gradient-to-br from-glass-navy to-glass-blue overflow-hidden">
+      <section ref={heroRef} className="relative pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 lg:py-32 bg-gradient-to-br from-glass-navy to-glass-blue overflow-hidden">
         <div className="absolute inset-0">
           <div 
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-              backgroundSize: '40px 40px',
+              backgroundSize: '32px 32px',
             }}
           />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             className="max-w-3xl"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-white/10 text-white font-medium text-sm mb-6">
+            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 text-white font-medium text-xs sm:text-sm mb-4 sm:mb-6">
               Get in Touch
             </span>
-            <h1 className="text-4xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-4 sm:mb-6 leading-tight">
               Let's Discuss Your{' '}
               <span className="text-glass-accent">Project</span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed">
               Ready to start your commercial glazing project? Contact us for a free consultation 
               and estimate. Our team is here to help bring your vision to life.
             </p>
@@ -94,20 +93,20 @@ export default function Contact() {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section ref={formRef} className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-5 gap-12">
+      <section ref={formRef} className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-5 gap-8 md:gap-10 lg:gap-12">
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isFormInView ? { opacity: 1, x: 0 } : {}}
-              className="lg:col-span-3"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isFormInView ? { opacity: 1, y: 0 } : {}}
+              className="lg:col-span-3 order-2 lg:order-1"
             >
-              <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-2xl shadow-glass-blue/10 border border-glass-blue/10">
-                <h2 className="text-2xl lg:text-3xl font-display font-bold text-glass-navy mb-2">
+              <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 lg:p-12 shadow-xl sm:shadow-2xl shadow-glass-blue/10 border border-glass-blue/10">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-glass-navy mb-1 sm:mb-2">
                   Request a Quote
                 </h2>
-                <p className="text-glass-slate mb-8">
+                <p className="text-glass-slate text-sm sm:text-base mb-6 sm:mb-8">
                   Fill out the form below and we'll get back to you within 24 hours.
                 </p>
 
@@ -115,23 +114,23 @@ export default function Contact() {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
+                    className="text-center py-8 sm:py-12"
                   >
-                    <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
-                      <CheckCircle size={40} className="text-green-500" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-green-100 flex items-center justify-center">
+                      <CheckCircle size={32} className="text-green-500 sm:w-10 sm:h-10" />
                     </div>
-                    <h3 className="text-2xl font-display font-bold text-glass-navy mb-2">
+                    <h3 className="text-xl sm:text-2xl font-display font-bold text-glass-navy mb-2">
                       Thank You!
                     </h3>
-                    <p className="text-glass-slate">
+                    <p className="text-glass-slate text-sm sm:text-base">
                       We've received your message and will be in touch shortly.
                     </p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-glass-navy mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-glass-navy mb-1.5 sm:mb-2">
                           Full Name *
                         </label>
                         <input
@@ -139,12 +138,12 @@ export default function Contact() {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all text-sm sm:text-base"
                           placeholder="John Smith"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-glass-navy mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-glass-navy mb-1.5 sm:mb-2">
                           Email Address *
                         </label>
                         <input
@@ -152,47 +151,47 @@ export default function Contact() {
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all text-sm sm:text-base"
                           placeholder="john@company.com"
                         />
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-glass-navy mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-glass-navy mb-1.5 sm:mb-2">
                           Phone Number
                         </label>
                         <input
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all text-sm sm:text-base"
                           placeholder="(555) 123-4567"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-glass-navy mb-2">
+                        <label className="block text-xs sm:text-sm font-medium text-glass-navy mb-1.5 sm:mb-2">
                           Company
                         </label>
                         <input
                           type="text"
                           value={formData.company}
                           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all text-sm sm:text-base"
                           placeholder="Company Name"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-glass-navy mb-2">
+                      <label className="block text-xs sm:text-sm font-medium text-glass-navy mb-1.5 sm:mb-2">
                         Service Needed
                       </label>
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all bg-white"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all bg-white text-sm sm:text-base"
                       >
                         <option value="">Select a service</option>
                         {services.map((service) => (
@@ -202,27 +201,27 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-glass-navy mb-2">
+                      <label className="block text-xs sm:text-sm font-medium text-glass-navy mb-1.5 sm:mb-2">
                         Project Details *
                       </label>
                       <textarea
                         required
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        rows={5}
-                        className="w-full px-4 py-3 rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all resize-none"
+                        rows={4}
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-glass-blue/20 focus:border-glass-blue focus:ring-2 focus:ring-glass-blue/20 outline-none transition-all resize-none text-sm sm:text-base"
                         placeholder="Tell us about your project, timeline, and any specific requirements..."
                       />
                     </div>
 
                     <motion.button
                       type="submit"
-                      className="w-full py-4 bg-gradient-to-r from-glass-blue to-glass-blue-dark text-white font-semibold rounded-xl flex items-center justify-center gap-2"
+                      className="w-full py-3 sm:py-4 bg-gradient-to-r from-glass-blue to-glass-blue-dark text-white font-semibold rounded-lg sm:rounded-xl flex items-center justify-center gap-2 text-sm sm:text-base"
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.99 }}
                     >
                       Send Message
-                      <Send size={18} />
+                      <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
                     </motion.button>
                   </form>
                 )}
@@ -231,10 +230,10 @@ export default function Contact() {
 
             {/* Contact Info */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={isFormInView ? { opacity: 1, x: 0 } : {}}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isFormInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="lg:col-span-2 space-y-8"
+              className="lg:col-span-2 space-y-4 sm:space-y-6 md:space-y-8 order-1 lg:order-2"
             >
               {/* Locations */}
               {locations.map((location, i) => (
@@ -243,36 +242,36 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isFormInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="p-6 rounded-2xl bg-glass-mist"
+                  className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-glass-mist"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-glass-blue/10 flex items-center justify-center">
-                      <Building2 size={20} className="text-glass-blue" />
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-glass-blue/10 flex items-center justify-center">
+                      <Building2 size={18} className="text-glass-blue sm:w-5 sm:h-5" />
                     </div>
-                    <h3 className="text-xl font-display font-bold text-glass-navy">
+                    <h3 className="text-base sm:text-lg md:text-xl font-display font-bold text-glass-navy">
                       {location.city}
                     </h3>
                   </div>
 
-                  <div className="space-y-3 text-glass-slate">
-                    <div className="flex items-start gap-3">
-                      <MapPin size={18} className="text-glass-accent mt-0.5 flex-shrink-0" />
+                  <div className="space-y-2 sm:space-y-3 text-glass-slate text-sm">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <MapPin size={16} className="text-glass-accent mt-0.5 flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
                       <span>{location.address}</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <Phone size={18} className="text-glass-accent flex-shrink-0" />
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <Phone size={16} className="text-glass-accent flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
                       <a href={`tel:${location.phone}`} className="hover:text-glass-blue transition-colors">
                         {location.phone}
                       </a>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <Mail size={18} className="text-glass-accent flex-shrink-0" />
-                      <a href={`mailto:${location.email}`} className="hover:text-glass-blue transition-colors">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <Mail size={16} className="text-glass-accent flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
+                      <a href={`mailto:${location.email}`} className="hover:text-glass-blue transition-colors break-all">
                         {location.email}
                       </a>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <Clock size={18} className="text-glass-accent flex-shrink-0" />
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <Clock size={16} className="text-glass-accent flex-shrink-0 sm:w-[18px] sm:h-[18px]" />
                       <span>{location.hours}</span>
                     </div>
                   </div>
@@ -284,19 +283,19 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isFormInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 }}
-                className="p-6 rounded-2xl bg-gradient-to-br from-glass-blue to-glass-blue-dark text-white"
+                className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-glass-blue to-glass-blue-dark text-white"
               >
-                <h3 className="text-xl font-display font-bold mb-2">
+                <h3 className="text-base sm:text-lg md:text-xl font-display font-bold mb-1 sm:mb-2">
                   24/7 Emergency Service
                 </h3>
-                <p className="text-white/80 mb-4">
+                <p className="text-white/80 mb-3 sm:mb-4 text-sm">
                   Need immediate assistance? Our emergency team is available around the clock.
                 </p>
                 <a
                   href="tel:+16065551234"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-glass-blue font-semibold rounded-xl hover:bg-glass-mist transition-colors"
+                  className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-white text-glass-blue font-semibold rounded-lg sm:rounded-xl hover:bg-glass-mist transition-colors text-sm sm:text-base"
                 >
-                  <Phone size={18} />
+                  <Phone size={16} className="sm:w-[18px] sm:h-[18px]" />
                   Call Now
                 </a>
               </motion.div>
@@ -306,12 +305,12 @@ export default function Contact() {
       </section>
 
       {/* Map Section */}
-      <section className="h-96 bg-glass-mist relative">
+      <section className="h-64 sm:h-80 md:h-96 bg-glass-mist relative">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin size={48} className="mx-auto text-glass-blue/30 mb-4" />
-            <p className="text-glass-slate">Interactive map would go here</p>
-            <p className="text-glass-slate text-sm">Pikeville, KY & Gallatin, TN</p>
+          <div className="text-center px-4">
+            <MapPin size={36} className="mx-auto text-glass-blue/30 mb-3 sm:mb-4 sm:w-12 sm:h-12" />
+            <p className="text-glass-slate text-sm sm:text-base">Interactive map would go here</p>
+            <p className="text-glass-slate text-xs sm:text-sm">Pikeville, KY & Gallatin, TN</p>
           </div>
         </div>
       </section>
